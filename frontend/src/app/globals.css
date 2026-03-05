@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  /* --- TYPOGRAPHY --- */
+  --font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+  
+  /* --- LIGHT THEME (Default) --- */
+  --bg-primary: #F8FAFC;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F1F5F9;
+  
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --text-muted: #94A3B8;
+  --text-on-primary: #FFFFFF;
+  
+  --primary: #2563EB;   /* Education Blue */
+  --primary-hover: #1D4ED8;
+  --primary-light: #DBEAFE;
+  
+  --secondary: #10B981; /* Growth Green */
+  --secondary-hover: #059669;
+  --secondary-light: #D1FAE5;
+  
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --info: #3B82F6;
+  
+  --border-color: #E2E8F0;
+  
+  --radius-lg: 0.75rem;
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0F172A;
+    --bg-secondary: #1E293B;
+    --bg-tertiary: #334155;
+    
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    
+    --primary: #3B82F6;
+    --primary-hover: #60A5FA;
+    --primary-light: rgba(59, 130, 246, 0.1);
+    
+    --secondary: #34D399;
+    --secondary-hover: #6EE7B7;
+    --secondary-light: rgba(52, 211, 153, 0.1);
+    
+    --border-color: #334155;
+  }
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-semibold tracking-tight;
+}
+
+.glass {
+  @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-white/20 dark:border-slate-800/20;
+}
+
+.card-premium {
+  @apply bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-all duration-300;
+}

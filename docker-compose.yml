@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env.production
+    expose:
+      - "5432"
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    expose:
+      - "6379"
+    command: >
+      sh -c 'redis-server --requirepass "$${REDIS_PASSWORD}" --appendonly yes'
+    env_file:
+      - .env.production
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    # IMPORTANT: The build context needs static files
+    volumes:
+      - static_volume:/app/staticfiles
+    env_file:
+      - .env.production
+    depends_on:
+      - db
+      - redis
+    expose:
+      - "8000"
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py migrate &&
+             gunicorn --bind 0.0.0.0:8000 --workers 4 core.wsgi:application"
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    expose:
+      - "3000"
+    depends_on:
+      - backend
+
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - static_volume:/app/staticfiles:ro
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  postgres_data:
+  static_volume:

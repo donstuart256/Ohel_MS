@@ -1,0 +1,13 @@
+{
+    "projectName": "uganda-sms",
+    "type": "Python/Django",
+    "backend": {
+        "path": "backend",
+        "entryPoint": "backend/manage.py",
+        "requirements": "backend/requirements.txt"
+    },
+    "testing": {
+        "framework": "django.test",
+        "testPath": "backend/tenants/tests.py"
+    }
+}
