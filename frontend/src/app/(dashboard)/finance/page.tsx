@@ -2,11 +2,11 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  CreditCard, 
-  Search, 
-  Filter, 
-  ArrowUpRight, 
+import {
+  CreditCard,
+  Search,
+  Filter,
+  ArrowUpRight,
   ArrowDownLeft,
   Smartphone,
   CheckCircle2,
@@ -24,7 +24,7 @@ const invoices = [
 
 export default function FinancePage() {
   const [showPayModal, setShowPayModal] = useState(false)
-  const [payStep, setPayStep] = useState('form') # form, pending, success
+  const [payStep, setPayStep] = useState('form') // form, pending, success
 
   const handlePayment = () => {
     setPayStep('pending')
@@ -85,8 +85,8 @@ export default function FinancePage() {
         <div className="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between gap-4">
           <div className="relative flex-1 max-w-md">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-            <input 
-              type="text" 
+            <input
+              type="text"
               placeholder="Filter by student or ID..."
               className="w-full pl-10 pr-4 py-2 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
             />
@@ -119,15 +119,15 @@ export default function FinancePage() {
                     <span className={cn(
                       "px-2 py-0.5 rounded-full text-[10px] font-bold uppercase",
                       inv.status === 'PAID' ? "bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400" :
-                      inv.status === 'PARTIAL' ? "bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400" :
-                      "bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-400"
+                        inv.status === 'PARTIAL' ? "bg-blue-100 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400" :
+                          "bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-400"
                     )}>
                       {inv.status}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-slate-500">{inv.date}</td>
                   <td className="px-6 py-4 text-right">
-                    <button 
+                    <button
                       onClick={() => setShowPayModal(true)}
                       className="text-primary hover:underline font-bold"
                     >
@@ -145,14 +145,14 @@ export default function FinancePage() {
       <AnimatePresence>
         {showPayModal && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setShowPayModal(false)}
               className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
             />
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -169,18 +169,18 @@ export default function FinancePage() {
                   </div>
                   <div className="space-y-4">
                     <div className="space-y-2">
-                       <label className="text-xs font-bold text-slate-400 uppercase">Phone Number</label>
-                       <div className="flex gap-2">
-                         <div className="px-3 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold">+256</div>
-                         <input type="text" placeholder="770 000 000" className="flex-1 px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none" />
-                       </div>
+                      <label className="text-xs font-bold text-slate-400 uppercase">Phone Number</label>
+                      <div className="flex gap-2">
+                        <div className="px-3 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold">+256</div>
+                        <input type="text" placeholder="770 000 000" className="flex-1 px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-primary/20 outline-none" />
+                      </div>
                     </div>
                     <div className="space-y-2">
-                       <label className="text-xs font-bold text-slate-400 uppercase">Amount (UGX)</label>
-                       <input type="text" defaultValue="1,200,000" className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold focus:ring-2 focus:ring-primary/20 outline-none" />
+                      <label className="text-xs font-bold text-slate-400 uppercase">Amount (UGX)</label>
+                      <input type="text" defaultValue="1,200,000" className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl font-bold focus:ring-2 focus:ring-primary/20 outline-none" />
                     </div>
                   </div>
-                  <button 
+                  <button
                     onClick={handlePayment}
                     className="w-full bg-primary hover:bg-primary-hover text-white py-4 rounded-xl font-bold shadow-lg shadow-primary/20 transition-all active:scale-95"
                   >
@@ -209,7 +209,7 @@ export default function FinancePage() {
                     <h3 className="text-xl font-bold dark:text-white">Payment Verified</h3>
                     <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Funds have been cleared and the invoice is updated.</p>
                   </div>
-                  <button 
+                  <button
                     onClick={() => setShowPayModal(false)}
                     className="w-full bg-slate-900 dark:bg-slate-700 text-white py-4 rounded-xl font-bold"
                   >
