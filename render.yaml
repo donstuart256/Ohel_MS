@@ -2,7 +2,6 @@ services:
   - type: web
     name: uganda-sms-backend
     env: docker
-    dockerfilePath: backend/Dockerfile
     rootDir: backend
     plan: free # Can upgrade later
     healthCheckPath: /api/v1/health/ # Optional, assuming there is a health endpoint
