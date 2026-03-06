@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: uganda-sms-backend
+    env: docker
+    rootDir: backend
+    plan: free # Can upgrade later
+    healthCheckPath: /api/v1/health/ # Optional, assuming there is a health endpoint
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: uganda-sms-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: uganda-sms-redis
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: JWT_SIGNING_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "0"
+
+databases:
+  - name: uganda-sms-db
+    plan: free
+    postgresMajorVersion: 15
+
+  - type: redis
+    name: uganda-sms-redis
+    plan: free
