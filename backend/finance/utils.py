@@ -1,6 +1,7 @@
 import requests
 import uuid
 import logging
+import os
 
 logger = logging.getLogger(__name__)
 
@@ -12,8 +13,8 @@ class MoMoIntegration:
     
     def __init__(self, provider='MTN'):
         self.provider = provider
-        # These would be in environment variables / Tenant-specific settings
-        self.api_key = "MOMO_API_KEY"
+        # Load API key from environment
+        self.api_key = os.getenv("MOMO_API_KEY", "DEFAULT_SANDBOX_KEY")
         self.base_url = "https://sandbox.momodeveloper.mtn.com" if provider == 'MTN' else "https://openapi.airtel.africa"
 
     def initiate_collection(self, phone_number, amount, external_id):

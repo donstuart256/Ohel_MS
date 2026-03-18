@@ -55,7 +55,7 @@ export async function fetchAPI<T = any>(
         }
     }
 
-    const res = await fetch(`${API_BASE}/${endpoint}`, {
+    const res = await fetch(`${API_BASE}/${endpoint.replace(/\/$/, '')}`, {
         headers,
         ...rest,
     });

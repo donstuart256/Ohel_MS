@@ -19,7 +19,7 @@ export default function LoginPage() {
   const [step, setStep] = useState<'login' | 'mfa'>('login')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [mfaToken, setMfaToken] = useState('')
   const [otp, setOtp] = useState(['', '', '', '', '', ''])
@@ -30,7 +30,7 @@ export default function LoginPage() {
     setError('')
 
     try {
-      const res = await login(email, password)
+      const res = await login(username, password)
       if (res.mfa_required && res.mfa_token) {
         setMfaToken(res.mfa_token)
         setStep('mfa')
@@ -113,15 +113,15 @@ export default function LoginPage() {
               >
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-slate-400 uppercase ml-1">Work Email</label>
+                    <label className="text-xs font-bold text-slate-400 uppercase ml-1">Username</label>
                     <div className="relative">
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                       <input
                         required
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="name@school.ac.ug"
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="john.doe"
                         className="w-full pl-12 pr-4 py-3.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl focus:ring-2 focus:ring-primary/20 outline-none transition-all text-slate-800 dark:text-slate-100"
                       />
                     </div>
