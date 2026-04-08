@@ -2,56 +2,66 @@
 
 :root {
   /* --- TYPOGRAPHY --- */
-  --font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+  --font-family: 'Nunito', 'Inter', -apple-system, sans-serif;
   
-  /* --- LIGHT THEME (Default) --- */
-  --bg-primary: #F8FAFC;
+  /* --- LIGHT THEME (Deep Purple & Orange) --- */
+  --bg-primary: #F5F6FA;
   --bg-secondary: #FFFFFF;
-  --bg-tertiary: #F1F5F9;
+  --bg-tertiary: #FFFFFF;
   
-  --text-primary: #1E293B;
-  --text-secondary: #64748B;
-  --text-muted: #94A3B8;
+  --text-primary: #1D1D1D;
+  --text-secondary: #4A4A4A;
+  --text-muted: #8E8E93;
   --text-on-primary: #FFFFFF;
   
-  --primary: #2563EB;   /* Education Blue */
-  --primary-hover: #1D4ED8;
-  --primary-light: #DBEAFE;
+  --primary: #2D0F5B;   /* Deep Purple */
+  --primary-hover: #1E0A3D;
+  --primary-light: #EBE5F5; /* Soft pastel purple */
   
-  --secondary: #10B981; /* Growth Green */
-  --secondary-hover: #059669;
-  --secondary-light: #D1FAE5;
+  --secondary: #F9B72F; /* Orange Accent */
+  --secondary-hover: #FF8633;
+  --secondary-light: #FFF4E5;
+  
+  --purple-pastel: #F0E6FE;
+  --yellow-pastel: #FFF8D6;
+  --green-pastel: #E6FFF0;
+  --blue-pastel: #E6F3FF;
   
   --success: #10B981;
-  --warning: #F59E0B;
+  --warning: #F9B72F;
   --danger: #EF4444;
-  --info: #3B82F6;
+  --info: #2D0F5B;
   
   --border-color: #E2E8F0;
   
-  --radius-lg: 0.75rem;
+  --radius-lg: 1rem;
   --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-primary: #0F172A;
-    --bg-secondary: #1E293B;
-    --bg-tertiary: #334155;
+    --bg-primary: #121212;
+    --bg-secondary: #1E1E1E;
+    --bg-tertiary: #2C2C2C;
     
-    --text-primary: #F8FAFC;
-    --text-secondary: #94A3B8;
-    --text-muted: #64748B;
+    --text-primary: #FFFFFF;
+    --text-secondary: #E0E0E0;
+    --text-muted: #A0A0A0;
     
-    --primary: #3B82F6;
-    --primary-hover: #60A5FA;
-    --primary-light: rgba(59, 130, 246, 0.1);
+    --primary: #411B7C;
+    --primary-hover: #552796;
+    --primary-light: rgba(45, 15, 91, 0.25);
     
-    --secondary: #34D399;
-    --secondary-hover: #6EE7B7;
-    --secondary-light: rgba(52, 211, 153, 0.1);
+    --secondary: #F9B72F;
+    --secondary-hover: #FF8633;
+    --secondary-light: rgba(249, 183, 47, 0.15);
     
-    --border-color: #334155;
+    --purple-pastel: rgba(45, 15, 91, 0.2);
+    --yellow-pastel: rgba(249, 183, 47, 0.15);
+    --green-pastel: rgba(52, 211, 153, 0.15);
+    --blue-pastel: rgba(96, 165, 250, 0.15);
+    
+    --border-color: #333333;
   }
 }
 

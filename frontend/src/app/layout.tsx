@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({
+const nunito = Nunito({
   subsets: ["latin"],
   variable: "--font-family",
 });
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.variable} antialiased`}>
+      <body className={`${nunito.variable} antialiased`}>
         {children}
       </body>
     </html>
