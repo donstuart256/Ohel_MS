@@ -35,3 +35,4 @@ services:
   - type: redis
     name: uganda-sms-redis
     plan: free
+    ipAllowList: [] # Required by Render - restricts access to internal services only
