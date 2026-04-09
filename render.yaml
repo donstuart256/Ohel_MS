@@ -4,12 +4,18 @@ services:
     env: docker
     rootDir: backend
     plan: free # Can upgrade later
-    healthCheckPath: /api/v1/health/ # Optional, assuming there is a health endpoint
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: uganda-sms-db
-          property: connectionString
+      # Expecting Supabase credentials to be provided in the Render Dashboard
+      - key: POSTGRES_HOST
+        sync: false
+      - key: POSTGRES_PORT
+        sync: false
+      - key: POSTGRES_DB
+        sync: false
+      - key: POSTGRES_USER
+        sync: false
+      - key: POSTGRES_PASSWORD
+        sync: false
       - key: REDIS_URL
         fromService:
           type: redis
@@ -21,11 +27,10 @@ services:
         generateValue: true
       - key: DEBUG
         value: "0"
-
-databases:
-  - name: uganda-sms-db
-    plan: free
-    postgresMajorVersion: 15
+      - key: ALLOWED_HOSTS
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
 
   - type: redis
     name: uganda-sms-redis
