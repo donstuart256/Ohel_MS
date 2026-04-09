@@ -10,3 +10,4 @@ redis
 drf-spectacular
 djangorestframework-simplejwt
 django-extensions
+gunicorn
