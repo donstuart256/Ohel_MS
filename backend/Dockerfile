@@ -37,4 +37,7 @@ EXPOSE 8000
 
 USER app
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "4", "--timeout", "120", "core.wsgi:application"]
+COPY --chown=app:app start.sh .
+RUN chmod +x start.sh
+
+CMD ["./start.sh"]
